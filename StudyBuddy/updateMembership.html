@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Memebership | Study Buddy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="main_container"> <!-- start main_container div -->
+
+        <div class="header"> <!-- start header div -->
+            <h1>Study Buddy Management</h1>
+        </div> <!-- end header div -->
+
+        <div class="content_container"> <!-- start content_container div -->
+
+            <h2 align="center">Update Membership</h2>
+
+            <form action="updateMembership.php" method="post">
+                <table class="dataForm">
+                    <tr>
+                        <td class="label">Admin User ID: </td>
+                        <td><input type="text" name="adminID" id="adminID"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">Member User ID: </td>
+                        <td><input type="text" name="userID" id="userID"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">Group ID: </td>
+                        <td><input type="text" name="groupID" id="groupID" placeholder="G..."></td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">Change Member Role: </td>
+                        <td>
+                            <select name="role" id="role">
+                                <option value="None"></option>
+                                <option value="Administrator">Administrator</option>
+                                <option value="Member">Member</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <button type="submit">Submit</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+            <br><br>
+            <a class="homeBtn" href="index.html">Return Home</a>
+
+        </div> <!-- start content_container div -->
+
+    </div> <!-- end main_container -->
+</body>
+
+</html>
