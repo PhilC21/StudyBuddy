@@ -19,7 +19,7 @@
 
             <h2 align="center">Study Buddy Users</h2>
 
-            <table border="1">
+            <table class="display">
                 <tr>
                     <th>User ID</th>
                     <th>First Name</th>
@@ -48,7 +48,7 @@
                 if ($result->num_rows > 0) {
                     // output data of each row
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
+                        echo "<tr class=\"record\">";
                         echo "<td>" . $row['userID'] . "</td>";
                         echo "<td>" . $row['fName'] . "</td>";
                         echo "<td>" . $row['lName'] . "</td>";

@@ -42,14 +42,23 @@
             $checkAdminResult = $conn->query($checkAdminQuery);
 
             if ($checkAdminResult->num_rows > 0) {
-                // User has administrator role, proceed with the update
-                $updateQuery = "UPDATE Memberships SET role = '$role' WHERE userID = '$userID' AND groupID = '$groupID'";
-                $updateResult = $conn->query($updateQuery);
+                // Check if the user is the sole administrator of the group
+                $countAdminsQuery = "SELECT COUNT(*) as adminCount FROM Memberships WHERE groupID = '$groupID' AND role = 'Administrator'";
+                $countAdminsResult = $conn->query($countAdminsQuery);
+                $adminCount = $countAdminsResult->fetch_assoc()['adminCount'];
 
-                if ($updateResult === TRUE) {
-                    echo "Membership has been updated successfully";
+                if ($adminCount > 1 || ($adminCount == 1 && $adminID != $userID)) {
+                    // User has administrator role and is not the sole administrator, proceed with the update
+                    $updateQuery = "UPDATE Memberships SET role = '$role' WHERE userID = '$userID' AND groupID = '$groupID'";
+                    $updateResult = $conn->query($updateQuery);
+
+                    if ($updateResult === TRUE) {
+                        echo "Membership has been updated successfully";
+                    } else {
+                        echo "Error updating record: " . $conn->error;
+                    }
                 } else {
-                    echo "Error updating record: " . $conn->error;
+                    echo "Cannot change the role of the sole administrator of the group!";
                 }
             } else {
                 echo "User does not have administrator role for the specified group!";

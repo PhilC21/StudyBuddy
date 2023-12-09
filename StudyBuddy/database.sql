@@ -15,7 +15,7 @@ CREATE TABLE Groups (
     createdBy INTEGER(8) DEFAULT NULL,
     dateCreated DATE DEFAULT CURRENT_DATE,
     PRIMARY KEY (groupID),
-    FOREIGN KEY (createdBy) REFERENCES Users(userID) ON DELETE SET NULL
+    FOREIGN KEY (createdBy) REFERENCES Users(userID) ON DELETE CASCADE
 );
 
 CREATE TABLE Memberships (

@@ -20,7 +20,7 @@ body {
 	margin: auto;
     margin-top: 10px;
 	padding: 10px;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.7);
     border-radius: 20px;
 }
 
@@ -52,6 +52,7 @@ button {
 .header{
     width: 100%;
     padding: 10px;
+    border-radius: 10px;
     background-color: navy;
     text-align: center;
 	margin-bottom: 2rem;
@@ -98,4 +99,30 @@ button {
 	display: block;
 }
 
+/* display table */
+table.display {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
 
+table.display tr {
+    border-bottom: solid white;
+}
+
+.record {
+    color: darkgray;
+}
+.record:hover {
+    background-color: rgba(0, 0, 128, 0.5);
+    color: orangered;
+}
+
+table.display tr th {
+    background-color: rgba(0, 0, 128, 0.7);
+}
+
+table.display tr td, 
+table.display tr th {
+    padding: 5px;
+}

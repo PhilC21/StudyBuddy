@@ -17,7 +17,6 @@
 
         <div class="content_container"> <!-- start content_container div -->
 
-
             <h2 align="center">Leave A Group</h2>
 
             <?php
@@ -39,12 +38,22 @@
             $result1 = $conn->query($sql1);
 
             if ($result1->num_rows > 0) {
-                // delete row   	  
+                // delete row
                 $sql2 = "DELETE FROM Memberships WHERE userID = '$userID' AND groupID = '$groupID'";
                 $result2 = $conn->query($sql2);
 
-                $row = $result1->fetch_row();
-                echo "<b>User has left the group</b>";
+                // Check if the group has no administrators left
+                $sql3 = "SELECT * FROM Memberships WHERE groupID = '$groupID' AND role = 'Administrator'";
+                $result3 = $conn->query($sql3);
+
+                if ($result3->num_rows == 0) {
+                    // Delete the group if no administrators are left
+                    $sql4 = "DELETE FROM Groups WHERE groupID = '$groupID'";
+                    $result4 = $conn->query($sql4);
+                    echo "<b>Sole Administrator has left the group, and the group has been deleted</b>";
+                } else {
+                    echo "<b>User has left the group</b>";
+                }
             } else {
                 echo "User does not exist!";
             }

@@ -19,7 +19,7 @@
 
             <h2 align="center">Study Buddy Groups</h2>
 
-            <table border="1">
+            <table class="display">
                 <tr>
                     <th>Group ID</th>
                     <th>Group Name</th>
@@ -47,7 +47,7 @@
                 if ($result->num_rows > 0) {
                     // output data of each row
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
+                        echo "<tr class=\"record\">";
                         echo "<td>" . $row['groupID'] . "</td>";
                         echo "<td>" . $row['name'] . "</td>";
                         echo "<td>" . $row['description'] . "</td>";

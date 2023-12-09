@@ -50,7 +50,7 @@
 
             if ($result->num_rows > 0) {
                 // output data of each row
-                echo "<table border='1'>";
+                echo "<table class=\"display\">";
                 echo "<tr>";
                 echo "<th>User ID</th>";
                 echo "<th>First Name</th>";
@@ -60,7 +60,7 @@
                 echo "</tr>";
 
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr>";
+                    echo "<tr class=\"record\">";
                     echo "<td>" . $row["userID"] . "</td>";
                     echo "<td>" . $row["fName"] . "</td>";
                     echo "<td>" . $row["lName"] . "</td>";
