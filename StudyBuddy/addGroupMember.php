@@ -35,14 +35,21 @@
             $userID = $_POST["userID"];
             $groupID = $_POST["groupID"];
 
-            $sql = "INSERT INTO Memberships (userID, groupID)
-            VALUES ('$userID', '$groupID')";
+            // Check if the user is already a member of the group
+            $checkMembershipQuery = "SELECT * FROM Memberships WHERE userID = '$userID' AND groupID = '$groupID'";
+            $checkMembershipResult = $conn->query($checkMembershipQuery);
 
-
-            if ($conn->query($sql) == TRUE) {
-                echo "Member successfully added to group!";
+            if ($checkMembershipResult->num_rows > 0) {
+                echo "User is already a member of the group.";
             } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
+                // User is not a member, proceed with adding the membership
+                $sql = "INSERT INTO Memberships (userID, groupID) VALUES ('$userID', '$groupID')";
+
+                if ($conn->query($sql) == TRUE) {
+                    echo "Member successfully added to the group!";
+                } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
             }
 
             $conn->close();

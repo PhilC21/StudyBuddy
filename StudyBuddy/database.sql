@@ -12,14 +12,13 @@ CREATE TABLE Groups (
     groupID VARCHAR(4),
     name VARCHAR(30),
     description TEXT,
-    createdBy INTEGER(8) DEFAULT NULL,
+    createdBy INTEGER,
     dateCreated DATE DEFAULT CURRENT_DATE,
     PRIMARY KEY (groupID),
-    FOREIGN KEY (createdBy) REFERENCES Users(userID) ON DELETE CASCADE
+    FOREIGN KEY (createdBy) REFERENCES Users(userID) ON DELETE SET NULL
 );
 
 CREATE TABLE Memberships (
-    membershipID INT AUTO_INCREMENT PRIMARY KEY,
     userID INT,
     groupID VARCHAR(4),
     role ENUM('Member', 'Administrator') NOT NULL,

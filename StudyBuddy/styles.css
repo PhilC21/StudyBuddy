@@ -107,7 +107,7 @@ table.display {
 }
 
 table.display tr {
-    border-bottom: solid white;
+    border-bottom: 1px solid whitesmoke;
 }
 
 .record {
